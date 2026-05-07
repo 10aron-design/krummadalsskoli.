@@ -1,1 +1,193 @@
+:root {
+  --orange: #E8660A;
+  --orange-light: #F07D2A;
+  --orange-dark: #C4520A;
+  --black: #1A1008;
+  --white: #FDFAF6;
+  --off-white: #F5EFE6;
+  --gray: #888;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Source Serif 4', Georgia, serif; background: var(--white); color: var(--black); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
 
+/* NAV */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 68px;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo img { width:42px; height:42px; background:white; border-radius:50%; padding:2px; object-fit:contain; }
+.nav-logo span { font-family:'Fraunces',serif; font-weight:700; font-size:1.2rem; color:var(--white); }
+.nav-links { display:flex; gap:1.75rem; list-style:none; }
+.nav-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.85rem; font-weight:300; letter-spacing:0.06em; transition:color 0.2s; }
+.nav-links a:hover { color:var(--orange-light); }
+.nav-links a.active { color:var(--orange-light); }
+
+/* HERO (forsíða) */
+.hero {
+  min-height:100vh; background:var(--orange);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:6rem 2rem 5rem; position:relative; overflow:hidden;
+}
+.hero::after {
+  content:''; position:absolute; bottom:-60px; left:0; right:0;
+  height:120px; background:var(--white); border-radius:60% 60% 0 0 / 60px 60px 0 0;
+}
+.hero-logo {
+  background:white; border-radius:50%; padding:12px;
+  width:160px; height:160px; display:flex; align-items:center; justify-content:center;
+  margin-bottom:2rem; box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  animation: popIn 0.7s ease-out both;
+}
+.hero-logo img { width:136px; height:136px; object-fit:contain; border-radius:50%; }
+@keyframes popIn { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
+.hero h1 {
+  font-family:'Fraunces',serif; font-weight:900;
+  font-size:clamp(3.5rem,9vw,7rem); color:var(--white);
+  line-height:0.92; letter-spacing:-0.03em;
+  text-shadow:0 4px 24px rgba(0,0,0,0.18);
+  animation: upIn 0.7s 0.15s ease-out both;
+}
+.hero-tagline {
+  margin-top:1.5rem; font-size:1.1rem; font-weight:300; font-style:italic;
+  color:rgba(255,255,255,0.88); animation: upIn 0.7s 0.3s ease-out both;
+}
+.hero-btns { margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; animation: upIn 0.7s 0.45s ease-out both; }
+@keyframes upIn { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.btn { padding:0.8rem 1.8rem; border-radius:4px; font-family:'Source Serif 4',serif; font-size:0.88rem; font-weight:600; text-decoration:none; letter-spacing:0.05em; transition:all 0.2s; border:none; cursor:pointer; display:inline-block; }
+.btn-white { background:var(--white); color:var(--orange-dark); }
+.btn-white:hover { background:var(--black); color:var(--white); }
+.btn-outline { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,0.55); }
+.btn-outline:hover { background:rgba(255,255,255,0.15); }
+
+/* SUBPAGE HERO (innri síður) */
+.subhero {
+  background: var(--orange);
+  padding: 9rem 2rem 4rem;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.subhero::after {
+  content:''; position:absolute; bottom:-40px; left:0; right:0;
+  height:80px; background:var(--white); border-radius:60% 60% 0 0 / 40px 40px 0 0;
+}
+.subhero .label {
+  display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.2em;
+  text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:0.75rem;
+}
+.subhero h1 {
+  font-family:'Fraunces',serif; font-weight:900;
+  font-size:clamp(2.5rem,6vw,4.5rem); line-height:1; letter-spacing:-0.02em;
+  text-shadow:0 4px 24px rgba(0,0,0,0.15);
+}
+.subhero p.subhero-lead {
+  margin-top:1.25rem; font-size:1.05rem; font-weight:300; font-style:italic;
+  color:rgba(255,255,255,0.9); max-width:620px; margin-left:auto; margin-right:auto;
+}
+
+/* SECTIONS */
+section { padding:5.5rem 2rem; }
+.container { max-width:1080px; margin:0 auto; }
+.label { display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:0.75rem; }
+.s-title { font-family:'Fraunces',serif; font-weight:900; font-size:clamp(2rem,5vw,3.2rem); line-height:1.05; color:var(--black); margin-bottom:1.25rem; }
+.s-body { font-size:1.05rem; font-weight:300; line-height:1.85; color:#3D2E1E; max-width:660px; }
+
+/* UM SKÓLANN */
+.about { background:var(--white); }
+
+/* DAGATAL */
+.calendar-section { background:var(--off-white); }
+.cal-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; margin-top:3rem; }
+.cal-month { background:var(--white); border-radius:6px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.cal-header { background:var(--orange); color:white; text-align:center; padding:0.6rem; font-family:'Fraunces',serif; font-weight:700; font-size:0.88rem; letter-spacing:0.1em; }
+.cal-days { display:grid; grid-template-columns:repeat(7,1fr); padding:0.5rem; gap:2px; }
+.cal-day-name { text-align:center; font-size:0.62rem; font-weight:600; letter-spacing:0.05em; color:var(--gray); padding:2px 0; }
+.cal-day { text-align:center; font-size:0.72rem; padding:3px 1px; border-radius:3px; color:var(--black); font-weight:300; }
+.cal-day.sun { color:var(--orange); font-weight:600; }
+.cal-day.empty { }
+.cal-note { font-size:0.8rem; color:var(--gray); text-align:center; margin-top:1rem; font-style:italic; }
+
+/* STUNDASKRÁ */
+.schedule-section { background:var(--white); }
+.schedule-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+.day-card { background:var(--off-white); border-radius:8px; overflow:hidden; }
+.day-header { background:var(--orange); color:white; padding:0.75rem 1.25rem; font-family:'Fraunces',serif; font-weight:700; font-size:1rem; }
+.day-body { padding:0.75rem 1.25rem; }
+.time-slot { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px dashed rgba(0,0,0,0.1); font-size:0.88rem; }
+.time-slot:last-child { border-bottom:none; }
+.time-slot .time { color:var(--gray); font-size:0.78rem; font-weight:300; white-space:nowrap; margin-right:0.75rem; }
+.time-slot .subj { font-weight:400; color:var(--black); }
+.time-slot.break .subj { color:var(--orange-dark); font-style:italic; font-size:0.82rem; }
+.time-slot.food .subj { color:#6B4C2A; font-style:italic; font-size:0.82rem; }
+
+/* NÁMSGREINAR */
+.subjects-section { background:var(--off-white); }
+.subj-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1.25rem; margin-top:2.75rem; }
+.subj-card { background:var(--white); border:2px solid #E8E0D5; border-radius:6px; padding:1.4rem 1rem; text-align:center; transition:all 0.22s; position:relative; overflow:hidden; }
+.subj-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--orange); transform:scaleX(0); transition:transform 0.22s; }
+.subj-card:hover { border-color:var(--orange); transform:translateY(-4px); box-shadow:0 8px 24px rgba(232,102,10,0.14); }
+.subj-card:hover::after { transform:scaleX(1); }
+.subj-icon { font-size:1.9rem; margin-bottom:0.6rem; display:block; }
+.subj-name { font-family:'Fraunces',serif; font-weight:700; font-size:0.95rem; }
+
+/* HREIÐRIÐ */
+.nest { background:var(--black); color:var(--white); position:relative; overflow:hidden; }
+.nest::before { content:'Hreiðrið'; position:absolute; right:-1rem; top:50%; transform:translateY(-50%); font-family:'Fraunces',serif; font-size:12rem; font-weight:900; color:rgba(255,255,255,0.03); white-space:nowrap; pointer-events:none; }
+.nest .s-title { color:var(--white); }
+.nest .s-body { color:rgba(255,255,255,0.72); }
+.nest-feats { display:flex; flex-wrap:wrap; gap:1rem; margin-top:2.5rem; }
+.nest-feat { display:flex; align-items:center; gap:0.65rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.65rem 1.1rem; }
+.nest-feat-icon { font-size:1.3rem; }
+.nest-feat-text { font-size:0.9rem; color:rgba(255,255,255,0.82); font-weight:300; }
+
+/* KENNARAR */
+.teachers { background:var(--white); }
+.teachers-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:4rem; align-items:center; margin-top:3rem; }
+.quote-block { background:var(--orange); border-radius:8px; padding:2.75rem; position:relative; }
+.quote-block::before { content:'"'; position:absolute; top:-0.75rem; left:1.5rem; font-family:'Fraunces',serif; font-size:7rem; color:rgba(255,255,255,0.18); line-height:1; }
+.quote-text { font-family:'Fraunces',serif; font-size:1.45rem; font-weight:700; color:white; line-height:1.35; position:relative; z-index:1; }
+
+/* HUGMYNDAFRÆÐI */
+.philosophy { background:var(--off-white); }
+.pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:1.75rem; margin-top:3rem; }
+.pillar { background:var(--white); border-radius:8px; border-top:4px solid var(--orange); padding:2.25rem 1.75rem; box-shadow:0 2px 12px rgba(0,0,0,0.05); }
+.pillar-num { font-family:'Fraunces',serif; font-size:2.8rem; font-weight:900; color:var(--orange); line-height:1; margin-bottom:0.75rem; }
+.pillar h3 { font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin-bottom:0.6rem; }
+.pillar p { font-size:0.93rem; font-weight:300; line-height:1.75; color:#4A3A28; }
+
+/* HVERS VEGNA */
+.why { background:var(--white); }
+.why-list { margin-top:2.75rem; display:flex; flex-direction:column; gap:1.1rem; max-width:700px; }
+.why-item { display:flex; gap:1.1rem; align-items:flex-start; padding:1.4rem; border-radius:6px; background:var(--off-white); border-left:4px solid var(--orange); }
+.why-dot { width:30px; height:30px; background:var(--orange); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.why-dot span { color:white; font-weight:700; font-size:0.78rem; font-family:'Fraunces',serif; }
+.why-text { font-size:0.98rem; line-height:1.75; font-weight:300; color:#3D2E1E; }
+
+/* FOOTER */
+footer { background:var(--black); color:var(--white); padding:3rem 2rem; text-align:center; margin-top: auto; }
+.footer-logo { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:1.25rem; }
+.footer-logo img { width:46px; height:46px; background:white; border-radius:50%; padding:3px; object-fit:contain; }
+.footer-logo span { font-family:'Fraunces',serif; font-weight:700; font-size:1.35rem; color:var(--white); }
+.footer-line { width:50px; height:2px; background:var(--orange); margin:1.1rem auto; }
+footer p { font-size:0.82rem; font-weight:300; color:rgba(255,255,255,0.45); letter-spacing:0.04em; }
+
+/* PAGE BODY (innri síður þurfa pláss undir nav) */
+.page-body { padding-top: 68px; }
+
+@media(max-width:900px) {
+  .teachers-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .pillars { grid-template-columns:1fr 1fr; }
+  .cal-grid { grid-template-columns:repeat(2,1fr); }
+  .schedule-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:600px) {
+  nav { padding: 0 1rem; }
+  .nav-links { display:none; }
+  .pillars,.cal-grid,.schedule-grid { grid-template-columns:1fr; }
+}
