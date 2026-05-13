@@ -815,6 +815,33 @@ footer p {
 }
 
 /* ===== RESPONSIVE ===== */
+/* ===== HAMBURGER ===== */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 200;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media(max-width:900px) {
   nav { padding: 0 1.5rem; }
   .teachers-grid { grid-template-columns:1fr; gap:3rem; }
@@ -825,11 +852,62 @@ footer p {
 }
 @media(max-width:600px) {
   nav { padding: 0 1rem; height: 64px; }
-  .nav-links { display:none; }
   .page-body { padding-top: 64px; }
+
+  /* Hamburger takki */
+  .nav-burger { display: flex; }
+
+  /* Valmynd falin sjálfgefið */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(26,16,8,0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+    z-index: 99;
+  }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+  }
+  .nav-links a::after { display: none; }
+
   .pillars,.cal-grid,.schedule-grid { grid-template-columns:1fr; }
-  .nest::after { font-size: 10rem; }
+  .nest::after { font-size: 8rem; }
   .quote-block { padding: 2.5rem 2rem; }
   .why-item { padding: 1.5rem; gap: 1rem; }
   section { padding: 4rem 1.25rem; }
+
+  .hero { padding: 7rem 1.5rem 5rem; }
+  .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
+  .hero-logo { width: 140px; height: 140px; }
+  .hero-logo img { width: 112px; height: 112px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 280px; text-align: center; }
+
+  .subhero { padding: 8rem 1.5rem 5rem; }
+  .subj-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .teachers-grid { grid-template-columns: 1fr; }
+  .schedule-grid { grid-template-columns: 1fr; }
+
+  .footer-logo span { font-size: 1.1rem; }
 }
