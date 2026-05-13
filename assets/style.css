@@ -892,6 +892,11 @@ footer p {
 
   .pillars,.cal-grid,.schedule-grid { grid-template-columns:1fr; }
   .nest::after { font-size: 8rem; }
+  .nest { padding: 6rem 1.25rem 5rem; min-height: unset; align-items: flex-start; }
+  .nest-feats { grid-template-columns: 1fr; margin-top: 2rem; }
+  .nest-feat { padding: 1rem 1.25rem; }
+  .nest .s-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .nest .s-body { font-size: 1rem; }
   .quote-block { padding: 2.5rem 2rem; }
   .why-item { padding: 1.5rem; gap: 1rem; }
   section { padding: 4rem 1.25rem; }
