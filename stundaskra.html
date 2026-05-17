@@ -6,6 +6,40 @@
 <title>Stundaskrá · Krummadalsskóli</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.grade-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.grade-selector label {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7a5c3a;
+}
+.grade-select {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  border: 2px solid var(--orange, #e87c3e);
+  border-radius: 6px;
+  background: var(--white, #fff);
+  color: var(--brown-dark, #2a1a0a);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23e87c3e' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+}
+.grade-select:focus { outline: none; border-color: #c45e20; }
+.schedule-grid { display: none; }
+.schedule-grid.active { display: grid; }
+</style>
 </head>
 <body class="page-body">
 
@@ -26,10 +60,9 @@
 </nav>
 
 <main>
-
 <section class="subhero">
   <div class="subhero-content">
-  <span class="label">10. bekkur</span>
+  <span class="label" id="grade-label">1. bekkur</span>
   <h1>Stunda<em>skrá</em></h1>
   <p class="subhero-lead">Daglegur skóladagur byrjar klukkan 8:30. Fríminútur og hádegismatur eru hluti af skipulagðri stundaskrá.</p>
   </div>
@@ -37,48 +70,318 @@
 
 <section class="schedule-section">
   <div class="container">
-    <div class="schedule-grid">
 
+    <div class="grade-selector">
+      <label for="grade-select">Velja bekk:</label>
+      <select class="grade-select" id="grade-select">
+        <option value="1" selected>1. bekkur</option>
+        <option value="2">2. bekkur</option>
+        <option value="3">3. bekkur</option>
+        <option value="4">4. bekkur</option>
+        <option value="5">5. bekkur</option>
+        <option value="6">6. bekkur</option>
+        <option value="7">7. bekkur</option>
+        <option value="8">8. bekkur</option>
+        <option value="9">9. bekkur</option>
+        <option value="10">10. bekkur</option>
+      </select>
+    </div>
+
+    <!-- ============================================================
+         1. BEKKUR
+         Sund:     Mánudagur    9:50–10:30
+         Íþróttir: Fimmtudagur  9:50–10:30
+    ============================================================ -->
+    <div class="schedule-grid active" id="grade-1">
       <div class="day-card">
         <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 11:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">11:20 – 12:00</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot food"><span class="time">12:00 – 12:40</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:40</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:40 – 11:20</span><span class="subj">Listir</span></div>
+          <div class="time-slot food"><span class="time">11:20 – 12:00</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:00 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:40</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:40 – 11:20</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">11:20 – 12:00</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:00 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 11:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">11:20 – 12:00</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot food"><span class="time">12:00 – 12:40</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:40</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:40 – 11:20</span><span class="subj">Listir</span></div>
+          <div class="time-slot food"><span class="time">11:20 – 12:00</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         2. BEKKUR
+         Sund:     Þriðjudagur  9:50–10:30
+         Íþróttir: Föstudagur   9:50–10:30
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-2">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:40</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:40 – 11:20</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot food"><span class="time">11:20 – 12:00</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:00 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 11:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">11:20 – 12:00</span><span class="subj">Listir</span></div>
+          <div class="time-slot food"><span class="time">12:00 – 12:40</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:40</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:40 – 11:20</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">11:20 – 12:00</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:00 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:40</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:40 – 11:20</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot food"><span class="time">11:20 – 12:00</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:00 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 11:10</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot food"><span class="time">11:10 – 11:50</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         3. BEKKUR
+         Sund:     Miðvikudagur 10:20–11:00
+         Íþróttir: Mánudagur    10:20–11:00
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-3">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Listir</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Samfélagsfræði</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">11:00 – 11:40</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         4. BEKKUR
+         Sund:     Fimmtudagur  10:20–11:00
+         Íþróttir: Þriðjudagur  10:20–11:00
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-4">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Samfélagsfræði</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Listir</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:00 – 11:40</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">11:40 – 12:10</span><span class="subj">Matur</span></div>
+          <div class="time-slot break"><span class="time">12:10 – 12:40</span><span class="subj">Fríminútur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:10</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:10 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">9:50 – 10:20</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:20 – 11:00</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">11:00 – 11:40</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         5. BEKKUR
+         Sund:     Föstudagur   10:50–11:30
+         Íþróttir: Miðvikudagur 10:50–11:30
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-5">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
         <div class="day-body">
           <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
           <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
           <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
-          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íþrottir</span></div>
-          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Danska</span></div>
-          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
-          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Enska</span></div>
-        </div>
-      </div>
-
-      <div class="day-card">
-        <div class="day-header">Þriðjudagur</div>
-        <div class="day-body">
-          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Spræs</span></div>
-          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
-          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
-          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Samfélagsfræði</span></div>
           <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Enska</span></div>
           <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
-          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Íslenska</span></div>
         </div>
       </div>
-
       <div class="day-card">
         <div class="day-header">Miðvikudagur</div>
         <div class="day-body">
           <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
-          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Náms</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
           <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
-          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Enska</span></div>
-          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Tónfræði</span></div>
           <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
-          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Danska</span></div>
-          <div class="time-slot"><span class="time">13:20 – 14:40</span><span class="subj">Val</span></div>
         </div>
       </div>
-
       <div class="day-card">
         <div class="day-header">Fimmtudagur</div>
         <div class="day-body">
@@ -86,28 +389,351 @@
           <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
           <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
           <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íslenska</span></div>
-          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Spræs</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Náttúrufræði</span></div>
           <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
-          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Spræs</span></div>
-          <div class="time-slot"><span class="time">13:20 – 14:40</span><span class="subj">Val</span></div>
         </div>
       </div>
-
       <div class="day-card">
         <div class="day-header">Föstudagur</div>
         <div class="day-body">
           <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
-          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
-          <div class="time-slot"><span class="time">10:30 – 10:50</span><span class="subj">Íslenska</span></div>
-          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Sund</span></div>
           <div class="time-slot food"><span class="time">11:30 – 12:10</span><span class="subj">Matur</span></div>
         </div>
       </div>
-
     </div>
+
+    <!-- ============================================================
+         6. BEKKUR
+         Sund:     Mánudagur    10:50–11:30
+         Íþróttir: Fimmtudagur  10:50–11:30
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-6">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Samfélagsfræði</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Tónfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Samfélagsfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Íslenska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">10:30 – 11:10</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">11:10 – 11:50</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         7. BEKKUR
+         Sund:     Þriðjudagur  10:50–11:30
+         Íþróttir: Föstudagur   10:50–11:30
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-7">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Danska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Íslenska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Danska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Tónfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Samfélagsfræði</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot food"><span class="time">11:30 – 12:10</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         8. BEKKUR
+         Sund:     Miðvikudagur 10:50–11:30
+         Íþróttir: Mánudagur    10:50–11:30
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-8">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Danska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Enska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Danska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Tónfræði</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Samfélagsfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">10:30 – 11:10</span><span class="subj">Danska</span></div>
+          <div class="time-slot food"><span class="time">11:10 – 11:50</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         9. BEKKUR
+         Sund:     Fimmtudagur  10:50–11:30
+         Íþróttir: Þriðjudagur  11:30–12:10
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-9">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Danska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Íslenska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Enska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Tónfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Danska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Íslenska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">10:30 – 11:10</span><span class="subj">Samfélagsfræði</span></div>
+          <div class="time-slot food"><span class="time">11:10 – 11:50</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         10. BEKKUR
+         Sund:     Föstudagur   10:30–11:10
+         Íþróttir: Mánudagur    10:50–11:30
+    ============================================================ -->
+    <div class="schedule-grid" id="grade-10">
+      <div class="day-card">
+        <div class="day-header">Mánudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íþróttir</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Danska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Enska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Þriðjudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Íslenska</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Miðvikudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Náttúrufræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Danska</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Fimmtudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Enska</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot break"><span class="time">10:30 – 10:50</span><span class="subj">Fríminútur</span></div>
+          <div class="time-slot"><span class="time">10:50 – 11:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">11:30 – 12:10</span><span class="subj">Samfélagsfræði</span></div>
+          <div class="time-slot food"><span class="time">12:10 – 12:40</span><span class="subj">Matur</span></div>
+          <div class="time-slot"><span class="time">12:40 – 13:20</span><span class="subj">Val</span></div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header">Föstudagur</div>
+        <div class="day-body">
+          <div class="time-slot"><span class="time">8:30 – 9:50</span><span class="subj">Stærðfræði</span></div>
+          <div class="time-slot"><span class="time">9:50 – 10:30</span><span class="subj">Íslenska</span></div>
+          <div class="time-slot"><span class="time">10:30 – 11:10</span><span class="subj">Sund</span></div>
+          <div class="time-slot"><span class="time">11:10 – 11:50</span><span class="subj">Enska</span></div>
+          <div class="time-slot food"><span class="time">11:50 – 12:20</span><span class="subj">Matur</span></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-
 </main>
 
 <footer>
@@ -120,5 +746,15 @@
 </footer>
 
 <script src="assets/script.js"></script>
+<script>
+  const select = document.getElementById('grade-select');
+  const label = document.getElementById('grade-label');
+  function showGrade(grade) {
+    document.querySelectorAll('.schedule-grid').forEach(el => el.classList.remove('active'));
+    document.getElementById('grade-' + grade).classList.add('active');
+    label.textContent = grade + '. bekkur';
+  }
+  select.addEventListener('change', function() { showGrade(this.value); });
+</script>
 </body>
 </html>
